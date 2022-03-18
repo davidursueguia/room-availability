@@ -10,37 +10,78 @@ export class HotelsService {
     {code: "hotel_2", name: "hotel_2_name"}
   ];
 
+  rooms: Room[] = [
+    {
+      hotel_code: 'hotel_1',
+      rates: [
+        {
+          name: 'rate_1',
+          totalPrice: '90.24',
+          breakDown: [{
+            breakDownDate: new Date("2022-01-01"),
+            breakDownData: {price: '45.12', allotment: '3'}
+          }, {breakDownDate: new Date("2022-01-02"), breakDownData: {price: '45.12', allotment: '2'}}]
+        }
+      ]
+    },
+    {
+      hotel_code: 'hotel_2',
+      rates: [
+        {
+          name: 'rate_1',
+          totalPrice: '190.24',
+          breakDown: [{
+            breakDownDate: new Date("2022-01-01"),
+            breakDownData: {price: '145.12', allotment: '3'}
+          }, {breakDownDate: new Date("2022-01-02"), breakDownData: {price: '145.12', allotment: '2'}}]
+        }
+      ]
+    }
+  ]
+
 
   constructor() {
   }
 
-
-  getHotels(){
+  async getHotels() {
+    await this.timeout(3000);
     return this.hotels;
+  }
+  async getRates(hotelCode: string){
+    await this.timeout(3000);
+    //todo search rate from hotelcode (backend)
+    return this.rooms.filter(r => r.hotel_code == hotelCode);
+  }
+
+  timeout(ms: number) {
+    return new Promise(resolve => setTimeout(resolve, ms));
   }
 }
 
 
-interface Hotel {
+export interface Hotel {
   code: string,
   name: string
   rooms?: Room[];
 }
 
 interface Room {
+  hotel_code: string
   rates: Rate[]
 }
 
 interface Rate {
-  totalPrice: number,
-  breakDown: Breakdown
+  name: string,
+  totalPrice: string,
+  breakDown: Breakdown[]
 }
 
 interface Breakdown {
+  breakDownDate: Date,
   breakDownData: BreakdownData
 }
 
 interface BreakdownData {
-  price: number,
-  allotment: number
+  price: string,
+  allotment: string
 }

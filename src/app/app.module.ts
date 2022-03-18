@@ -11,12 +11,15 @@ import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
 import {MatDividerModule} from "@angular/material/divider";
 import {MatIconModule} from "@angular/material/icon";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import { RatesViewerComponent } from './components/rates-viewer/rates-viewer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RoomSearcherComponent
+    RoomSearcherComponent,
+    RatesViewerComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +31,9 @@ import {FormsModule} from "@angular/forms";
     MatNativeDateModule,
     MatDividerModule,
     MatIconModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     MatDatepickerModule,

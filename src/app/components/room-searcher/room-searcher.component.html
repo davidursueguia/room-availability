@@ -1,36 +1,40 @@
-<div class="searcher">
+<div class="spinner" *ngIf="!isDataLoaded">
+  <mat-spinner></mat-spinner>
+</div>
+<div *ngIf="isDataLoaded" class="searcher">
   <div class="searcher-header">
     <h1>Availability example</h1>
     <mat-divider></mat-divider>
   </div>
-  <div class="searcher-form">
+  <div [formGroup]="availabilityForm" class="searcher-form">
     <mat-form-field appearance="fill">
       <mat-label>Hotels</mat-label>
-      <mat-select [(ngModel)]="selectedHotel">
-        <mat-option *ngFor="let hotel of hotelsService.getHotels()" [value]="hotel.code">
+      <mat-select [formControlName]="'hotel'">
+        <mat-option *ngFor="let hotel of this.hotels" [value]="hotel.code">
           {{hotel.name}}
         </mat-option>
       </mat-select>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
-      <mat-label>Choose a date</mat-label>
-      <input matInput [matDatepicker]="startDate">
+      <mat-label>Check in</mat-label>
+      <input [formControlName]="'startDate'" matInput [matDatepicker]="startDate">
       <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
       <mat-datepicker #startDate></mat-datepicker>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
-      <mat-label>Choose a date</mat-label>
-      <input matInput [matDatepicker]="endDate">
+      <mat-label>Check out</mat-label>
+      <input [formControlName]="'endDate'" matInput [matDatepicker]="endDate">
       <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
       <mat-datepicker #endDate></mat-datepicker>
     </mat-form-field>
-    <button class="check-button" mat-raised-button color="primary">CHECK AVAILABILITY</button>
+    <button (click)="onCheckAvailability()" [disabled]="!availabilityForm.valid" class="check-button" mat-raised-button
+            color="primary">CHECK AVAILABILITY
+    </button>
   </div>
-  <div class="availability-results">
-    <mat-icon aria-hidden="false" aria-label="Example home icon">search</mat-icon>
-    <h2>CHECK AVAILABILITY</h2>
-    <p style="font-weight: 100;">Select a Hotel and two dates and you will receive magical results</p>
+  <div class="spinner" *ngIf="isAvailabilityLoading">
+    <mat-spinner></mat-spinner>
   </div>
+  <app-rates-viewer *ngIf="!isAvailabilityLoading"></app-rates-viewer>
 </div>
