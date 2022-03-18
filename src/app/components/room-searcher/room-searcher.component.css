@@ -1,0 +1,21 @@
+.searcher{
+  text-align: center;
+}
+
+.searcher-header{
+  text-align: start;
+  padding: 10px;
+}
+
+.searcher-form{
+  display: grid;
+  grid-template-columns: auto auto auto auto ;
+  column-gap: 50px;
+  padding: 50px;
+  align-items: center;
+}
+
+.check-button{
+  background-color: mediumseagreen;
+
+}
