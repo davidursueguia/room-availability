@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {TranslationService} from "../../services/translation.service";
 
 @Component({
   selector: 'app-rates-viewer',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RatesViewerComponent implements OnInit {
 
-  constructor() { }
+  constructor(public translationService: TranslationService) { }
 
   ngOnInit(): void {
   }

@@ -3,12 +3,20 @@
 </div>
 <div *ngIf="isDataLoaded" class="searcher">
   <div class="searcher-header">
-    <h1>Availability example</h1>
+    <h1>{{'availabilityExample' | translator:this.translationService.language}}</h1>
+    <mat-form-field appearance="fill">
+      <mat-label>{{'selectLanguage' | translator:this.translationService.language}}</mat-label>
+      <mat-select (valueChange)="onLanguageChange($event)" [(value)]="this.translationService.language">
+        <mat-option *ngFor="let language of this.translationService.availableLanguages" [value]="language">
+          {{language}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
     <mat-divider></mat-divider>
   </div>
   <div [formGroup]="availabilityForm" class="searcher-form">
     <mat-form-field appearance="fill">
-      <mat-label>Hotels</mat-label>
+      <mat-label>{{'hotels'|translator:this.translationService.language}}</mat-label>
       <mat-select [formControlName]="'hotel'">
         <mat-option *ngFor="let hotel of this.hotels" [value]="hotel.code">
           {{hotel.name}}
@@ -17,20 +25,20 @@
     </mat-form-field>
 
     <mat-form-field appearance="fill">
-      <mat-label>Check in</mat-label>
+      <mat-label>{{'checkIn' | translator:this.translationService.language}}</mat-label>
       <input [formControlName]="'startDate'" matInput [matDatepicker]="startDate">
       <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
       <mat-datepicker #startDate></mat-datepicker>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
-      <mat-label>Check out</mat-label>
+      <mat-label>{{'checkOut' | translator:this.translationService.language}}</mat-label>
       <input [formControlName]="'endDate'" matInput [matDatepicker]="endDate">
       <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
       <mat-datepicker #endDate></mat-datepicker>
     </mat-form-field>
     <button (click)="onCheckAvailability()" [disabled]="!availabilityForm.valid" class="check-button" mat-raised-button
-            color="primary">CHECK AVAILABILITY
+            color="primary">{{'checkAvailability' | translator:this.translationService.language}}
     </button>
   </div>
   <div class="spinner" *ngIf="isAvailabilityLoading">

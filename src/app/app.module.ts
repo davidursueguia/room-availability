@@ -14,12 +14,14 @@ import {MatIconModule} from "@angular/material/icon";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import { RatesViewerComponent } from './components/rates-viewer/rates-viewer.component';
+import { TranslatorPipe } from './pipes/translator.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     RoomSearcherComponent,
-    RatesViewerComponent
+    RatesViewerComponent,
+    TranslatorPipe
   ],
   imports: [
     BrowserModule,

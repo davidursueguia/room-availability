@@ -23,19 +23,16 @@ export class RoomSearcherComponent implements OnInit {
   );
 
 
-  constructor(public hotelsService: HotelsService, private translationService: TranslationService) {
+  constructor(public hotelsService: HotelsService, public translationService: TranslationService) {
   }
 
   async ngOnInit(): Promise<void> {
 
+    //todo initilize formgroup here
 
     try {
       //get hotels from server
       this.hotels = await this.hotelsService.getHotels();
-
-      //todo
-      //get translations text
-
       this.isDataLoaded = true;
     } catch (e) {
       console.log(e);
@@ -46,10 +43,14 @@ export class RoomSearcherComponent implements OnInit {
   async onCheckAvailability() {
     try{
       this.isAvailabilityLoading = true;
-      console.log(await this.hotelsService.getRates('hotel_1'));
+      console.log(await this.hotelsService.getRates('hotel_1', new Date(), new Date()));
       this.isAvailabilityLoading = false;
     }catch (e){
       console.log(e);
     }
+  }
+
+  onLanguageChange(language: Event) {
+    this.translationService.onChangeLanguage(language+'');
   }
 }

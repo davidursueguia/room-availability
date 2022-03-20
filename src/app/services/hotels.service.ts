@@ -47,7 +47,7 @@ export class HotelsService {
     await this.timeout(3000);
     return this.hotels;
   }
-  async getRates(hotelCode: string){
+  async getRates(hotelCode: string, checkIn: Date, checkOut: Date){
     await this.timeout(3000);
     //todo search rate from hotelcode (backend)
     return this.rooms.filter(r => r.hotel_code == hotelCode);
