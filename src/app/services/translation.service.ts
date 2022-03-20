@@ -17,7 +17,8 @@ export class TranslationService {
       checkIn: 'Check in',
       checkOut: 'Check out',
       tipAvailability: 'Select a Hotel and two dates and you will receive magical results',
-      selectLanguage: 'Language'
+      selectLanguage: 'Language',
+      fare: 'Fare'
     },
     es: {
       availabilityExample: 'Ejemplo disponibilidad',
@@ -26,7 +27,8 @@ export class TranslationService {
       checkIn: 'Entrada',
       checkOut: 'Salida',
       tipAvailability: 'Selecciona un hotel y 2 fechas para recibir resultados mágicos',
-      selectLanguage: 'Idioma'
+      selectLanguage: 'Idioma',
+      fare: 'Tarifa'
     }
   }
 
@@ -53,6 +55,7 @@ interface Dictionary {
   checkIn: string,
   checkOut: string,
   tipAvailability: string,
-  selectLanguage: string
+  selectLanguage: string,
+  fare: string
 }
 

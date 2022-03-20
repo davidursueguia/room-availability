@@ -1,6 +1,6 @@
 import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {TranslationService} from "../../services/translation.service";
-import {Room} from "../../services/hotels.service";
+import {HotelsService, Room} from "../../services/hotels.service";
 
 @Component({
   selector: 'app-rates-viewer',
@@ -12,7 +12,7 @@ export class RatesViewerComponent implements OnInit, OnChanges{
   @Input() rooms : Room[] = [];
   displayedColumns: string[] = ['name', 'totalPrice'];
 
-  constructor(public translationService: TranslationService) { }
+  constructor(public hotelsService: HotelsService, public translationService: TranslationService) { }
 
   ngOnInit(): void {
   }

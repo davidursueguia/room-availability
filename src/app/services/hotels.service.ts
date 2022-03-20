@@ -6,16 +6,41 @@ import {Injectable} from '@angular/core';
 export class HotelsService {
 
   hotels: Hotel[] = [
-    {code: "hotel_1", name: "hotel_1_name"},
-    {code: "hotel_2", name: "hotel_2_name"}
+    {code: "hotel_1", name: "Hotel W"},
+    {code: "hotel_2", name: "Hotel Casa Diaz"}
   ];
 
   rooms: Room[] = [
     {
       hotel_code: 'hotel_1',
+      roomName: 'Supreme',
       rates: [
         {
-          name: 'rate_1',
+          name: 'Estandar',
+          totalPrice: '90.24',
+          breakDown: [{
+            breakDownDate: new Date("2022-01-01"),
+            breakDownData: {price: '445.12', allotment: '3'}
+          }, {breakDownDate: new Date("2022-01-02"), breakDownData: {price: '445.12', allotment: '2'}}]
+        },
+        {
+          name: 'Business',
+          totalPrice: '90.24',
+          breakDown: [{
+            breakDownDate: new Date("2022-01-01"),
+            breakDownData: {price: '453.12', allotment: '3'}
+          }, {breakDownDate: new Date("2022-01-02"), breakDownData: {price: '445.12', allotment: '2'}}]
+        },
+        {
+          name: 'Premium',
+          totalPrice: '90.24',
+          breakDown: [{
+            breakDownDate: new Date("2022-01-01"),
+            breakDownData: {price: '451.12', allotment: '3'}
+          }, {breakDownDate: new Date("2022-01-02"), breakDownData: {price: '445.12', allotment: '2'}}]
+        },
+        {
+          name: 'Premium +',
           totalPrice: '90.24',
           breakDown: [{
             breakDownDate: new Date("2022-01-01"),
@@ -26,14 +51,15 @@ export class HotelsService {
     },
     {
       hotel_code: 'hotel_2',
+      roomName: 'Standard',
       rates: [
         {
-          name: 'rate_1',
+          name: 'Economic',
           totalPrice: '190.24',
           breakDown: [{
             breakDownDate: new Date("2022-01-01"),
-            breakDownData: {price: '145.12', allotment: '3'}
-          }, {breakDownDate: new Date("2022-01-02"), breakDownData: {price: '145.12', allotment: '2'}}]
+            breakDownData: {price: '15.12', allotment: '3'}
+          }, {breakDownDate: new Date("2022-01-02"), breakDownData: {price: '15.12', allotment: '2'}}]
         }
       ]
     }
@@ -50,7 +76,12 @@ export class HotelsService {
   async getRates(hotelCode: string, checkIn: Date, checkOut: Date){
     await this.timeout(3000);
     //todo search rate from hotelcode (backend)
+    console.log('get rates');
     return this.rooms.filter(r => r.hotel_code == hotelCode);
+  }
+
+  getHotelName(hotelCode: string){
+    return this.hotels.find(h => h.code == hotelCode)?.name;
   }
 
   timeout(ms: number) {
@@ -66,7 +97,8 @@ export interface Hotel {
 }
 
 export interface Room {
-  hotel_code: string
+  hotel_code: string,
+  roomName: string,
   rates: Rate[]
 }
 
