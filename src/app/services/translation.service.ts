@@ -9,9 +9,7 @@ export class TranslationService {
     'en', 'es'
   ]
   public language: string = "en";
-  public values: { [key: string]: Dictionary } = {}
-
-  private dictionary = {
+  private dictionary : {[key:string]: Dictionary} = {
     en: {
       availabilityExample: 'Availability example',
       hotels: 'Hotels',
@@ -33,7 +31,7 @@ export class TranslationService {
   }
 
 
-  onChangeLanguage(lang : string){
+  onChangeLanguage(lang: string) {
     this.language = lang;
   }
 
@@ -50,11 +48,11 @@ export class TranslationService {
 
 interface Dictionary {
   availabilityExample: string,
-  hotel: string,
+  hotels: string,
   checkAvailability: string,
   checkIn: string,
   checkOut: string,
-  tipAvailability: 'string',
-  selectLanguage: 'string'
+  tipAvailability: string,
+  selectLanguage: string
 }
 
