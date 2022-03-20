@@ -15,6 +15,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import { RatesViewerComponent } from './components/rates-viewer/rates-viewer.component';
 import { TranslatorPipe } from './pipes/translator.pipe';
+import {MatTableModule} from "@angular/material/table";
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { TranslatorPipe } from './pipes/translator.pipe';
     MatIconModule,
     FormsModule,
     ReactiveFormsModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatTableModule
   ],
   providers: [
     MatDatepickerModule,

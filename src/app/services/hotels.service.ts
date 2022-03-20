@@ -65,12 +65,12 @@ export interface Hotel {
   rooms?: Room[];
 }
 
-interface Room {
+export interface Room {
   hotel_code: string
   rates: Rate[]
 }
 
-interface Rate {
+export interface Rate {
   name: string,
   totalPrice: string,
   breakDown: Breakdown[]

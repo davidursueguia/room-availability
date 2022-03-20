@@ -9,7 +9,7 @@ export class TranslationService {
     'en', 'es'
   ]
   public language: string = "en";
-  private dictionary : {[key:string]: Dictionary} = {
+  private dictionary : {[key: string]: Dictionary} = {
     en: {
       availabilityExample: 'Availability example',
       hotels: 'Hotels',

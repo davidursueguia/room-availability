@@ -44,5 +44,5 @@
   <div class="spinner" *ngIf="isAvailabilityLoading">
     <mat-spinner></mat-spinner>
   </div>
-  <app-rates-viewer *ngIf="!isAvailabilityLoading"></app-rates-viewer>
+  <app-rates-viewer [rooms]="availableRooms" *ngIf="!isAvailabilityLoading"></app-rates-viewer>
 </div>

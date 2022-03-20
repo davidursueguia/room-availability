@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Hotel, HotelsService} from "../../services/hotels.service";
+import {Hotel, HotelsService, Room} from "../../services/hotels.service";
 import {TranslationService} from "../../services/translation.service";
 import {FormControl, FormGroup, Validator, Validators} from "@angular/forms";
 import {F} from "@angular/cdk/keycodes";
@@ -21,6 +21,7 @@ export class RoomSearcherComponent implements OnInit {
       'endDate': new FormControl(null, Validators.required)
     }
   );
+  public availableRooms: Room[] = [];
 
 
   constructor(public hotelsService: HotelsService, public translationService: TranslationService) {
@@ -41,16 +42,20 @@ export class RoomSearcherComponent implements OnInit {
   }
 
   async onCheckAvailability() {
-    try{
+    try {
       this.isAvailabilityLoading = true;
-      console.log(await this.hotelsService.getRates('hotel_1', new Date(), new Date()));
+      let hotel = this.availabilityForm.get('hotel')?.value;
+      let checkIn = this.availabilityForm.get('checkIn')?.value;
+      let checkOut = this.availabilityForm.get('checkOut')?.value;
+      this.availableRooms = await this.hotelsService.getRates(hotel, checkIn, checkOut);
       this.isAvailabilityLoading = false;
-    }catch (e){
+      console.log('Available rooms: ' + this.availableRooms[0]);
+    } catch (e) {
       console.log(e);
     }
   }
 
   onLanguageChange(language: Event) {
-    this.translationService.onChangeLanguage(language+'');
+    this.translationService.onChangeLanguage(language + '');
   }
 }
