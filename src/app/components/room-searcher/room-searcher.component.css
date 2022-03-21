@@ -1,25 +1,20 @@
 .searcher{
   text-align: center;
+  padding: 1%;
 }
-
 .searcher-header{
   text-align: start;
-  padding: 10px;
 }
-
 .searcher-form{
   display: grid;
+  width: 100%;
   grid-template-columns: auto auto auto auto ;
-  column-gap: 50px;
-  padding: 50px;
-  align-items: center;
+  column-gap: 3%;
+  align-items: baseline;
 }
-
 .check-button{
   background-color: mediumseagreen;
-
 }
-
 .spinner{
   text-align: -webkit-center;
 }

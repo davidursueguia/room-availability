@@ -15,21 +15,20 @@ export class RoomSearcherComponent implements OnInit {
   isDataLoaded: boolean = false;
   isAvailabilityLoading: boolean = false;
   hotels: Hotel[] = [];
+  availabilityFormControls = availabilityFormControls;
   availabilityForm = new FormGroup({
-      'hotel': new FormControl(null, Validators.required),
-      'startDate': new FormControl(null, Validators.required),
-      'endDate': new FormControl(null, Validators.required)
+      [availabilityFormControls.hotel]: new FormControl(null, Validators.required),
+      [availabilityFormControls.startDate]: new FormControl(null, Validators.required),
+      [availabilityFormControls.endDate]: new FormControl(null, Validators.required)
     }
   );
-  public availableRooms: Room[] = [];
+  availableRooms: Room[] = [];
 
 
   constructor(public hotelsService: HotelsService, public translationService: TranslationService) {
   }
 
   async ngOnInit(): Promise<void> {
-
-    //todo initilize formgroup here
 
     try {
       //get hotels from server
@@ -58,4 +57,10 @@ export class RoomSearcherComponent implements OnInit {
   onLanguageChange(language: Event) {
     this.translationService.onChangeLanguage(language + '');
   }
+}
+
+const availabilityFormControls = {
+  hotel: 'hotel',
+  startDate: 'startDate',
+  endDate: 'endDate'
 }

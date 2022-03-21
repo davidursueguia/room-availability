@@ -1,7 +1,7 @@
-<div class="spinner" *ngIf="!isDataLoaded">
+<div class="spinner" *ngIf="false"><!-- todo fix -->
   <mat-spinner></mat-spinner>
 </div>
-<div *ngIf="isDataLoaded" class="searcher">
+<div *ngIf="true" class="searcher">
   <div class="searcher-header">
     <h1>{{'availabilityExample' | translator:this.translationService.language}}</h1>
     <mat-form-field appearance="fill">
@@ -17,7 +17,7 @@
   <div [formGroup]="availabilityForm" class="searcher-form">
     <mat-form-field appearance="fill">
       <mat-label>{{'hotels'|translator:this.translationService.language}}</mat-label>
-      <mat-select [formControlName]="'hotel'">
+      <mat-select [formControlName]="availabilityFormControls.hotel">
         <mat-option *ngFor="let hotel of this.hotels" [value]="hotel.code">
           {{hotel.name}}
         </mat-option>
@@ -26,23 +26,23 @@
 
     <mat-form-field appearance="fill">
       <mat-label>{{'checkIn' | translator:this.translationService.language}}</mat-label>
-      <input [formControlName]="'startDate'" matInput [matDatepicker]="startDate">
+      <input [formControlName]="availabilityFormControls.startDate" matInput [matDatepicker]="startDate">
       <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
       <mat-datepicker #startDate></mat-datepicker>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>{{'checkOut' | translator:this.translationService.language}}</mat-label>
-      <input [formControlName]="'endDate'" matInput [matDatepicker]="endDate">
+      <input [formControlName]="availabilityFormControls.endDate" matInput [matDatepicker]="endDate">
       <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
-      <mat-datepicker #endDate></mat-datepicker>
+      <mat-datepicker #endDate ></mat-datepicker>
     </mat-form-field>
     <button (click)="onCheckAvailability()" [disabled]="!availabilityForm.valid" class="check-button" mat-raised-button
             color="primary">{{'checkAvailability' | translator:this.translationService.language}}
     </button>
   </div>
-  <div class="spinner" *ngIf="isAvailabilityLoading">
+  <div class="spinner" *ngIf="false"><!-- todo fix -->
     <mat-spinner></mat-spinner>
   </div>
-  <app-rates-viewer [rooms]="availableRooms" *ngIf="!isAvailabilityLoading"></app-rates-viewer>
+  <app-rates-viewer [rooms]="availableRooms" *ngIf="true"></app-rates-viewer>
 </div>
