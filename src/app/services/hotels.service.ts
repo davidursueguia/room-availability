@@ -65,7 +65,7 @@ export class HotelsService {
     },
     {
       hotel_code: 'hotel_2',
-      roomName: 'Room Extra Plus',
+      roomName: 'Extra Plus',
       rates: [
         {
           name: 'Premium Plus +',
@@ -97,9 +97,14 @@ export class HotelsService {
     return this.filterRooms(hotelCode, checkIn, checkOut);
   }
 
+  /**
+   *
+   * filter rooms from hotel given a hotel code, check in and checkout date
+   * it must be a backend function from api call
+   */
+
   filterRooms(hotelCode: string, checkIn: Date, checkOut: Date) {
     let filteredRooms: Room[] = [];
-
     this.rooms.filter(r => r.hotel_code == hotelCode).forEach(room => {
       room.rates.forEach(rate => {
         rate.breakDown.forEach(b => {
@@ -126,6 +131,7 @@ export class HotelsService {
         })
       })
     })
+    console.log('filtered rooms ' + filteredRooms);
     return filteredRooms;
   }
 
