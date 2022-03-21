@@ -17,7 +17,7 @@ export class HotelsService {
       rates: [
         {
           name: 'Estandar',
-          totalPrice: '90.24',
+          totalPrice: '10.24',
           breakDown: [{
             breakDownDate: new Date("2022-01-01"),
             breakDownData: {price: '445.12', allotment: '3'}
@@ -25,7 +25,7 @@ export class HotelsService {
         },
         {
           name: 'Business',
-          totalPrice: '90.24',
+          totalPrice: '64.24',
           breakDown: [{
             breakDownDate: new Date("2022-01-01"),
             breakDownData: {price: '453.12', allotment: '3'}
@@ -33,7 +33,7 @@ export class HotelsService {
         },
         {
           name: 'Premium',
-          totalPrice: '90.24',
+          totalPrice: '97.24',
           breakDown: [{
             breakDownDate: new Date("2022-01-01"),
             breakDownData: {price: '451.12', allotment: '3'}
@@ -41,10 +41,10 @@ export class HotelsService {
         },
         {
           name: 'Premium +',
-          totalPrice: '90.24',
+          totalPrice: '34.24',
           breakDown: [{
             breakDownDate: new Date("2022-01-02"),
-            breakDownData: {price: '45.12', allotment: '3'}
+            breakDownData: {price: '454.12', allotment: '3'}
           }, {breakDownDate: new Date("2022-01-02"), breakDownData: {price: '45.12', allotment: '2'}}]
         }
       ]
@@ -58,7 +58,7 @@ export class HotelsService {
           totalPrice: '190.24',
           breakDown: [{
             breakDownDate: new Date("2022-01-01"),
-            breakDownData: {price: '15.12', allotment: '3'}
+            breakDownData: {price: '165.12', allotment: '3'}
           }, {breakDownDate: new Date("2022-01-02"), breakDownData: {price: '15.12', allotment: '2'}}]
         }
       ]

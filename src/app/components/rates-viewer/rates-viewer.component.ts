@@ -7,7 +7,7 @@ import {HotelsService, Room} from "../../services/hotels.service";
   templateUrl: './rates-viewer.component.html',
   styleUrls: ['./rates-viewer.component.css']
 })
-export class RatesViewerComponent implements OnInit, OnChanges{
+export class RatesViewerComponent implements OnInit{
 
   @Input() rooms : Room[] = [];
   displayedColumns: string[] = ['name', 'totalPrice'];
@@ -16,9 +16,4 @@ export class RatesViewerComponent implements OnInit, OnChanges{
 
   ngOnInit(): void {
   }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes);
-  }
-
 }
