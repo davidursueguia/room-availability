@@ -5,18 +5,18 @@
 <div *ngIf="this.isDataLoaded" class="searcher">
   <div class="searcher-header">
     <h1>{{'availabilityExample' | translator:this.translationService.language}}</h1>
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="outline">
       <mat-label>{{'selectLanguage' | translator:this.translationService.language}}</mat-label>
       <mat-select (valueChange)="onLanguageChange($event)" [(value)]="this.translationService.language">
-        <mat-option *ngFor="let language of this.translationService.availableLanguages" [value]="language">
-          {{language}}
+        <mat-option *ngFor="let language of this.translationService.availableLanguages" [value]="language.languageCode">
+          {{language.languageName}}
         </mat-option>
       </mat-select>
     </mat-form-field>
     <mat-divider></mat-divider>
   </div>
   <div [formGroup]="availabilityForm" class="searcher-form">
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="outline">
       <mat-label>{{'hotels'|translator:this.translationService.language}}</mat-label>
       <mat-select [formControlName]="availabilityFormControls.hotel">
         <mat-option *ngFor="let hotel of this.hotels" [value]="hotel.code">
@@ -25,14 +25,14 @@
       </mat-select>
     </mat-form-field>
 
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="outline">
       <mat-label>{{'checkIn' | translator:this.translationService.language}}</mat-label>
       <input [formControlName]="availabilityFormControls.checkIn" matInput [matDatepicker]="startDate">
       <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
       <mat-datepicker #startDate></mat-datepicker>
     </mat-form-field>
 
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="outline">
       <mat-label>{{'checkOut' | translator:this.translationService.language}}</mat-label>
       <input [formControlName]="availabilityFormControls.checkOut" matInput [matDatepicker]="endDate">
       <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>

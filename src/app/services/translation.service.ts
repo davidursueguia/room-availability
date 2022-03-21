@@ -5,8 +5,9 @@ import {Injectable} from '@angular/core';
 })
 export class TranslationService {
 
-  public availableLanguages = [
-    'en', 'es'
+  public availableLanguages : AvailableLanguage[] = [
+    {languageCode: 'en', languageName: 'English'},
+    {languageCode: 'es', languageName: 'Español'}
   ]
   public language: string = "en";
   private dictionary : {[key: string]: Dictionary} = {
@@ -68,3 +69,7 @@ interface Dictionary {
   price: string
 }
 
+interface AvailableLanguage {
+  languageCode : string,
+  languageName : string
+}
