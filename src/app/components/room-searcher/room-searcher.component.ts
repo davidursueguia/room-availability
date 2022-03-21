@@ -53,7 +53,11 @@ export class RoomSearcherComponent implements OnInit {
   }
 
   onLanguageChange(language: Event) {
-    this.translationService.onChangeLanguage(language + '');
+    try {
+      this.translationService.onChangeLanguage(language + '');
+    } catch (e) {
+      console.log(e);
+    }
   }
 }
 

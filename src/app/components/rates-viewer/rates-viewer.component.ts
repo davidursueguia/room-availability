@@ -7,12 +7,13 @@ import {HotelsService, Room} from "../../services/hotels.service";
   templateUrl: './rates-viewer.component.html',
   styleUrls: ['./rates-viewer.component.css']
 })
-export class RatesViewerComponent implements OnInit{
+export class RatesViewerComponent implements OnInit {
 
-  @Input() rooms : Room[] = [];
+  @Input() rooms: Room[] = [];
   displayedColumns: string[] = ['name', 'totalPrice'];
 
-  constructor(public hotelsService: HotelsService, public translationService: TranslationService) { }
+  constructor(public hotelsService: HotelsService, public translationService: TranslationService) {
+  }
 
   ngOnInit(): void {
   }
