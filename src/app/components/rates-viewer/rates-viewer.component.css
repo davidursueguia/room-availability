@@ -2,3 +2,6 @@ table {
   width: 100%;
   text-align: left;
 }
+.rooms-table{
+  margin-top: 25px;
+}

@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Hotel, HotelsService, Room} from "../../services/hotels.service";
 import {TranslationService} from "../../services/translation.service";
-import {FormControl, FormGroup, Validator, Validators} from "@angular/forms";
-import {F} from "@angular/cdk/keycodes";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-room-searcher',
@@ -18,8 +17,8 @@ export class RoomSearcherComponent implements OnInit {
   availabilityFormControls = availabilityFormControls;
   availabilityForm = new FormGroup({
       [availabilityFormControls.hotel]: new FormControl(null, Validators.required),
-      [availabilityFormControls.startDate]: new FormControl(null, Validators.required),
-      [availabilityFormControls.endDate]: new FormControl(null, Validators.required)
+      [availabilityFormControls.checkIn]: new FormControl(null, Validators.required),
+      [availabilityFormControls.checkOut]: new FormControl(null, Validators.required)
     }
   );
   availableRooms: Room[] = [];
@@ -43,12 +42,11 @@ export class RoomSearcherComponent implements OnInit {
   async onCheckAvailability() {
     try {
       this.isAvailabilityLoading = true;
-      let hotel = this.availabilityForm.get('hotel')?.value;
-      let checkIn = this.availabilityForm.get('checkIn')?.value;
-      let checkOut = this.availabilityForm.get('checkOut')?.value;
-      this.availableRooms = await this.hotelsService.getRates(hotel, checkIn, checkOut);
+      let hotel = this.availabilityForm.get(availabilityFormControls.hotel)?.value;
+      let checkIn = this.availabilityForm.get(availabilityFormControls.checkIn)?.value;
+      let checkOut = this.availabilityForm.get(availabilityFormControls.checkOut)?.value;
+      this.availableRooms = await this.hotelsService.getAvailability(hotel, checkIn, checkOut);
       this.isAvailabilityLoading = false;
-      console.log('Available rooms: ' + this.availableRooms[0]);
     } catch (e) {
       console.log(e);
     }
@@ -61,6 +59,6 @@ export class RoomSearcherComponent implements OnInit {
 
 const availabilityFormControls = {
   hotel: 'hotel',
-  startDate: 'startDate',
-  endDate: 'endDate'
+  checkIn: 'checkIn',
+  checkOut: 'checkOut'
 }

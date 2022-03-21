@@ -19,7 +19,9 @@ export class TranslationService {
       tipAvailability: 'Select a Hotel and two dates and you will receive magical results',
       selectLanguage: 'Language',
       fare: 'Fare',
-      roomsAvailable: 'rooms available at '
+      roomsAvailable: 'rooms available at ',
+      room: 'Room',
+      price: 'Price'
     },
     es: {
       availabilityExample: 'Ejemplo disponibilidad',
@@ -30,7 +32,9 @@ export class TranslationService {
       tipAvailability: 'Selecciona un hotel y 2 fechas para recibir resultados mágicos',
       selectLanguage: 'Idioma',
       fare: 'Tarifa',
-      roomsAvailable: 'habitaciones disponibles en '
+      roomsAvailable: 'habitaciones disponibles en ',
+      room: 'Habitación',
+      price: 'Precio'
     }
   }
 
@@ -59,6 +63,8 @@ interface Dictionary {
   tipAvailability: string,
   selectLanguage: string,
   fare: string,
-  roomsAvailable: string
+  roomsAvailable: string,
+  room: string,
+  price: string
 }
 

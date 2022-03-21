@@ -43,7 +43,7 @@ export class HotelsService {
           name: 'Premium +',
           totalPrice: '90.24',
           breakDown: [{
-            breakDownDate: new Date("2022-01-01"),
+            breakDownDate: new Date("2022-01-02"),
             breakDownData: {price: '45.12', allotment: '3'}
           }, {breakDownDate: new Date("2022-01-02"), breakDownData: {price: '45.12', allotment: '2'}}]
         }
@@ -62,6 +62,20 @@ export class HotelsService {
           }, {breakDownDate: new Date("2022-01-02"), breakDownData: {price: '15.12', allotment: '2'}}]
         }
       ]
+    },
+    {
+      hotel_code: 'hotel_2',
+      roomName: 'Room Extra Plus',
+      rates: [
+        {
+          name: 'Premium Plus +',
+          totalPrice: '1900.24',
+          breakDown: [{
+            breakDownDate: new Date("2022-01-01"),
+            breakDownData: {price: '15.12', allotment: '3'}
+          }, {breakDownDate: new Date("2022-01-02"), breakDownData: {price: '15.12', allotment: '2'}}]
+        }
+      ]
     }
   ]
 
@@ -73,14 +87,49 @@ export class HotelsService {
     await this.timeout(3000);
     return this.hotels;
   }
-  async getRates(hotelCode: string, checkIn: Date, checkOut: Date){
-    await this.timeout(3000);
-    //todo search rate from hotelcode (backend)
-    console.log('get rates');
-    return this.rooms.filter(r => r.hotel_code == hotelCode);
+
+  /**
+   * Simulates availability request:
+   * /api/availability/<hotel-code>/<checkin-date>/<checkout-date>
+   */
+  async getAvailability(hotelCode: string, checkIn: Date, checkOut: Date) {
+    await this.timeout(2000); //fake http request time
+    return this.filterRooms(hotelCode, checkIn, checkOut);
   }
 
-  getHotelName(hotelCode: string){
+  filterRooms(hotelCode: string, checkIn: Date, checkOut: Date) {
+    let filteredRooms: Room[] = [];
+
+    this.rooms.filter(r => r.hotel_code == hotelCode).forEach(room => {
+      room.rates.forEach(rate => {
+        rate.breakDown.forEach(b => {
+          if (b.breakDownDate >= checkIn && b.breakDownDate <= checkOut) {
+            if (filteredRooms.find(r => r.roomName == room.roomName)) {
+              filteredRooms.filter(r => r.roomName == room.roomName)[0].rates.push({
+                name: rate.name,
+                totalPrice: rate.totalPrice,
+                breakDown: [{breakDownData: b.breakDownData, breakDownDate: b.breakDownDate}]
+              } as Rate);
+            } else {
+              let newRoom = {
+                hotel_code: hotelCode,
+                roomName: room.roomName,
+                rates: [{
+                  name: rate.name,
+                  totalPrice: rate.totalPrice,
+                  breakDown: [{breakDownDate: b.breakDownDate, breakDownData: b.breakDownData}]
+                }]
+              } as Room;
+              filteredRooms.push(newRoom);
+            }
+          }
+        })
+      })
+    })
+    return filteredRooms;
+  }
+
+  getHotelName(hotelCode: string) {
     return this.hotels.find(h => h.code == hotelCode)?.name;
   }
 

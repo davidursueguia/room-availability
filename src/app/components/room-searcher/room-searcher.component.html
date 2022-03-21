@@ -26,14 +26,14 @@
 
     <mat-form-field appearance="fill">
       <mat-label>{{'checkIn' | translator:this.translationService.language}}</mat-label>
-      <input [formControlName]="availabilityFormControls.startDate" matInput [matDatepicker]="startDate">
+      <input [formControlName]="availabilityFormControls.checkIn" matInput [matDatepicker]="startDate">
       <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
       <mat-datepicker #startDate></mat-datepicker>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>{{'checkOut' | translator:this.translationService.language}}</mat-label>
-      <input [formControlName]="availabilityFormControls.endDate" matInput [matDatepicker]="endDate">
+      <input [formControlName]="availabilityFormControls.checkOut" matInput [matDatepicker]="endDate">
       <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
       <mat-datepicker #endDate ></mat-datepicker>
     </mat-form-field>

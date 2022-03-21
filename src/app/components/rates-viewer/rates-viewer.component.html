@@ -7,14 +7,14 @@
   <div *ngIf="rooms.length > 0"><!--todo solve table -->
     <div>{{rooms[0].rates.length}} {{'roomsAvailable' | translator:this.translationService.language}} {{this.hotelsService.getHotelName(rooms[0].hotel_code)}}</div>
     <div *ngFor="let room of rooms">
-      <table mat-table [dataSource]="room.rates" class="mat-elevation-z8">
+      <table mat-table [dataSource]="room.rates" class="mat-elevation-z8 rooms-table">
         <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef>Room {{rooms[0].roomName}}</th>
+          <th mat-header-cell *matHeaderCellDef>{{'room' |translator:this.translationService.language}} {{rooms[0].roomName}}</th>
           <td mat-cell *matCellDef="let element"> {{'fare' | translator:this.translationService.language}} {{element.name}} </td>
         </ng-container>
 
         <ng-container matColumnDef="totalPrice">
-          <th mat-header-cell *matHeaderCellDef>Price</th>
+          <th mat-header-cell *matHeaderCellDef>{{'price'|translator:this.translationService.language}}</th>
           <td mat-cell *matCellDef="let element"> {{element.totalPrice}} € </td>
         </ng-container>
 
