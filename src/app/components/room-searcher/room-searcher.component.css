@@ -11,6 +11,7 @@
   grid-template-columns: auto auto auto auto ;
   column-gap: 3%;
   align-items: baseline;
+  padding: 10px;
 }
 .check-button{
   background-color: mediumseagreen;
