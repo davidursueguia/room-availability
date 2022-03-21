@@ -26,7 +26,7 @@ export class TranslationService {
     es: {
       availabilityExample: 'Ejemplo disponibilidad',
       hotels: 'Hoteles',
-      checkAvailability: 'BUSCAR DISPONIBILIDAD',
+      checkAvailability: 'COMPROBAR DISPONIBILIDAD',
       checkIn: 'Entrada',
       checkOut: 'Salida',
       tipAvailability: 'Selecciona un hotel y 2 fechas para recibir resultados mágicos',
@@ -44,9 +44,9 @@ export class TranslationService {
   }
 
   translate(word: string) {
-    // @ts-ignore //todo remove ts-ignore
+
     if (this.dictionary[this.language] != null) {
-      // @ts-ignore //todo remove ts-ignore
+      // @ts-ignore //todo fix
       return this.dictionary[this.language][word];
     } else {
       //download new language from api and return word
