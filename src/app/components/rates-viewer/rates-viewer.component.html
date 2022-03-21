@@ -5,7 +5,7 @@
     <p style="font-weight: 100;">{{'tipAvailability' | translator:this.translationService.language}}</p>
   </div>
   <div *ngIf="rooms.length > 0"><!--todo solve table -->
-    <div>{{rooms[0].rates.length}} {{'roomsAvailable' | translator:this.translationService.language}} {{this.hotelsService.getHotelName(rooms[0].hotel_code)}}</div>
+    <div>{{rooms.length}} {{'roomsAvailable' | translator:this.translationService.language}} {{this.hotelsService.getHotelName(rooms[0].hotel_code)}}</div>
     <div *ngFor="let room of rooms">
       <table mat-table [dataSource]="room.rates" class="mat-elevation-z8 rooms-table">
         <ng-container matColumnDef="name">
