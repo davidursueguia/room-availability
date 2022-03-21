@@ -1,7 +1,8 @@
-<div class="spinner" *ngIf="false"><!-- todo fix -->
-  <mat-spinner></mat-spinner>
+<div class="spinner" *ngIf="!this.isDataLoaded">
+  <mat-spinner style="margin:0 auto;"></mat-spinner>
+  <p>Downloading data...</p>
 </div>
-<div *ngIf="true" class="searcher">
+<div *ngIf="this.isDataLoaded" class="searcher">
   <div class="searcher-header">
     <h1>{{'availabilityExample' | translator:this.translationService.language}}</h1>
     <mat-form-field appearance="fill">
@@ -35,14 +36,14 @@
       <mat-label>{{'checkOut' | translator:this.translationService.language}}</mat-label>
       <input [formControlName]="availabilityFormControls.checkOut" matInput [matDatepicker]="endDate">
       <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
-      <mat-datepicker #endDate ></mat-datepicker>
+      <mat-datepicker #endDate></mat-datepicker>
     </mat-form-field>
     <button (click)="onCheckAvailability()" [disabled]="!availabilityForm.valid" class="check-button" mat-raised-button
             color="primary">{{'checkAvailability' | translator:this.translationService.language}}
     </button>
   </div>
-  <div class="spinner" *ngIf="false"><!-- todo fix -->
+  <div class="spinner" *ngIf="this.isAvailabilityLoading">
     <mat-spinner></mat-spinner>
   </div>
-  <app-rates-viewer [rooms]="availableRooms" *ngIf="true"></app-rates-viewer>
+  <app-rates-viewer [rooms]="availableRooms" *ngIf="!this.isAvailabilityLoading"></app-rates-viewer>
 </div>
