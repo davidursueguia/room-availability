@@ -64,11 +64,11 @@ export class HotelsService {
     },
     {
       hotel_code: 'hotel_2',
-      roomName: 'Extra Plus',
+      roomName: 'Extra',
       rates: [
         {
-          name: 'Premium Plus +',
-          totalPrice: '1900.24',
+          name: 'Economic',
+          totalPrice: '190.24',
           breakDown: [{
             breakDownDate: new Date("2022-01-01"),
             breakDownData: {price: '15.12', allotment: '3'}
