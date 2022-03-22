@@ -30,7 +30,7 @@ export class TranslationService {
       checkAvailability: 'COMPROBAR DISPONIBILIDAD',
       checkIn: 'Entrada',
       checkOut: 'Salida',
-      tipAvailability: 'Selecciona un hotel y 2 fechas para recibir resultados mágicos',
+      tipAvailability: 'Selecciona un hotel y 2 fechas y recibirás resultados mágicos',
       selectLanguage: 'Idioma',
       fare: 'Tarifa',
       roomsAvailable: 'habitaciones disponibles en ',
@@ -39,16 +39,24 @@ export class TranslationService {
     }
   }
 
-
+  /**
+   * Updates the UI selected language
+   * @param lang
+   */
   onChangeLanguage(lang: string) {
     this.language = lang;
   }
 
+  /**
+   * Check if the selected language is downloaded, then returns translated
+   * word. Else, it (should) downloads the new dictionary from /api/translations
+   * @param word
+   */
   translate(word: string) {
     if (this.dictionary[this.language] != null) {
       return this.dictionary[this.language][word];
     } else {
-      //download new language from api and return word
+      //download new language from api and return translated word
     }
   }
 }

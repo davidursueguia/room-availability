@@ -10,10 +10,12 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 })
 export class RoomSearcherComponent implements OnInit {
 
-
   isDataLoaded: boolean = false;
   isAvailabilityLoading: boolean = false;
+
   hotels: Hotel[] = [];
+  availableRooms: Room[] = [];
+
   availabilityFormControls = availabilityFormControls;
   availabilityForm = new FormGroup({
       [availabilityFormControls.hotel]: new FormControl(null, Validators.required),
@@ -21,22 +23,17 @@ export class RoomSearcherComponent implements OnInit {
       [availabilityFormControls.checkOut]: new FormControl(null, Validators.required)
     }
   );
-  availableRooms: Room[] = [];
-
 
   constructor(public hotelsService: HotelsService, public translationService: TranslationService) {
   }
 
   async ngOnInit(): Promise<void> {
-
     try {
-      //get hotels from server
       this.hotels = await this.hotelsService.getHotels();
       this.isDataLoaded = true;
     } catch (e) {
       console.log(e);
     }
-
   }
 
   async onCheckAvailability() {
