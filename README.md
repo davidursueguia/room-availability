@@ -10,6 +10,10 @@ Run `npm install` to install all dependencies
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
+## Usage
+
+Data is mocked: To see results select a hotel and the check in date must be 1/1/2022 .
+
 ## Disclaimer
 
 This project is a test for the position of web developer of Roiback's company
