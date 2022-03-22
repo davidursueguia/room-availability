@@ -5,12 +5,12 @@ import {Injectable} from '@angular/core';
 })
 export class TranslationService {
 
-  public availableLanguages : AvailableLanguage[] = [
+  public availableLanguages: AvailableLanguage[] = [
     {languageCode: 'en', languageName: 'English'},
     {languageCode: 'es', languageName: 'Español'}
   ]
   public language: string = "en";
-  private dictionary : {[key: string]: Dictionary} = {
+  private dictionary: { [key: string]: Dictionary } = {
     en: {
       availabilityExample: 'Availability example',
       hotels: 'Hotels',
@@ -45,9 +45,7 @@ export class TranslationService {
   }
 
   translate(word: string) {
-
     if (this.dictionary[this.language] != null) {
-      // @ts-ignore //todo fix
       return this.dictionary[this.language][word];
     } else {
       //download new language from api and return word
@@ -70,6 +68,6 @@ interface Dictionary {
 }
 
 interface AvailableLanguage {
-  languageCode : string,
-  languageName : string
+  languageCode: string,
+  languageName: string
 }

@@ -9,7 +9,6 @@ export class HotelsService {
     {code: "hotel_1", name: "Hotel W"},
     {code: "hotel_2", name: "Hotel Casa Diaz"}
   ];
-
   rooms: Room[] = [
     {
       hotel_code: 'hotel_1',
@@ -79,7 +78,6 @@ export class HotelsService {
     }
   ]
 
-
   constructor() {
   }
 
@@ -91,6 +89,9 @@ export class HotelsService {
   /**
    * Simulates availability request:
    * /api/availability/<hotel-code>/<checkin-date>/<checkout-date>
+   * @param hotelCode
+   * @param checkIn
+   * @param checkOut
    */
   async getAvailability(hotelCode: string, checkIn: Date, checkOut: Date) {
     await this.timeout(2000); //fake http request time
@@ -98,11 +99,13 @@ export class HotelsService {
   }
 
   /**
+   * Simulates backend function:
+   * filter rooms from given hotel code, check in and checkout date
    *
-   * filter rooms from hotel given a hotel code, check in and checkout date
-   * it must be a backend function from api call
+   * @param hotelCode
+   * @param checkIn
+   * @param checkOut
    */
-
   filterRooms(hotelCode: string, checkIn: Date, checkOut: Date) {
     let filteredRooms: Room[] = [];
     this.rooms.filter(r => r.hotel_code == hotelCode).forEach(room => {
@@ -132,14 +135,21 @@ export class HotelsService {
         })
       })
     })
-    console.log('filtered rooms ' + filteredRooms);
     return filteredRooms;
   }
 
+  /**
+   *
+   * @param hotelCode
+   */
   getHotelName(hotelCode: string) {
     return this.hotels.find(h => h.code == hotelCode)?.name;
   }
 
+  /**
+   * Fakes a response time of a request from backend
+   * @param ms
+   */
   timeout(ms: number) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
