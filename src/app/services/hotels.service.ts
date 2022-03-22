@@ -20,16 +20,16 @@ export class HotelsService {
           totalPrice: '10.24',
           breakDown: [{
             breakDownDate: new Date("2022-01-01"),
-            breakDownData: {price: '445.12', allotment: '3'}
-          }, {breakDownDate: new Date("2022-01-02"), breakDownData: {price: '445.12', allotment: '2'}}]
+            breakDownData: {price: '44.12', allotment: '3'}
+          }]
         },
         {
           name: 'Business',
           totalPrice: '64.24',
           breakDown: [{
             breakDownDate: new Date("2022-01-01"),
-            breakDownData: {price: '453.12', allotment: '3'}
-          }, {breakDownDate: new Date("2022-01-02"), breakDownData: {price: '445.12', allotment: '2'}}]
+            breakDownData: {price: '483.12', allotment: '3'}
+          }]
         },
         {
           name: 'Premium',
@@ -37,15 +37,15 @@ export class HotelsService {
           breakDown: [{
             breakDownDate: new Date("2022-01-01"),
             breakDownData: {price: '451.12', allotment: '3'}
-          }, {breakDownDate: new Date("2022-01-02"), breakDownData: {price: '445.12', allotment: '2'}}]
+          }]
         },
         {
           name: 'Premium +',
           totalPrice: '34.24',
           breakDown: [{
             breakDownDate: new Date("2022-01-02"),
-            breakDownData: {price: '454.12', allotment: '3'}
-          }, {breakDownDate: new Date("2022-01-02"), breakDownData: {price: '45.12', allotment: '2'}}]
+            breakDownData: {price: '4.12', allotment: '3'}
+          }]
         }
       ]
     },
@@ -58,8 +58,8 @@ export class HotelsService {
           totalPrice: '190.24',
           breakDown: [{
             breakDownDate: new Date("2022-01-01"),
-            breakDownData: {price: '165.12', allotment: '3'}
-          }, {breakDownDate: new Date("2022-01-02"), breakDownData: {price: '15.12', allotment: '2'}}]
+            breakDownData: {price: '161.12', allotment: '3'}
+          }]
         }
       ]
     },
@@ -73,7 +73,7 @@ export class HotelsService {
           breakDown: [{
             breakDownDate: new Date("2022-01-01"),
             breakDownData: {price: '15.12', allotment: '3'}
-          }, {breakDownDate: new Date("2022-01-02"), breakDownData: {price: '15.12', allotment: '2'}}]
+          }]
         }
       ]
     }
@@ -108,6 +108,7 @@ export class HotelsService {
     this.rooms.filter(r => r.hotel_code == hotelCode).forEach(room => {
       room.rates.forEach(rate => {
         rate.breakDown.forEach(b => {
+          b.breakDownDate.setHours(0, 0, 0, 0);
           if (b.breakDownDate >= checkIn && b.breakDownDate <= checkOut) {
             if (filteredRooms.find(r => r.roomName == room.roomName)) {
               filteredRooms.filter(r => r.roomName == room.roomName)[0].rates.push({
