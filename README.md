@@ -20,6 +20,6 @@ There are not tests
 
 ## Disclaimer
 
-This project is a test for the position of web developer of Roiback's company
+This project is a test for Roiback's company
 
 Developed by: David Ursueguia
