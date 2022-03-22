@@ -14,6 +14,10 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
 
 Data is mocked: To see results select a hotel and the check in date must be 1/1/2022 .
 
+## Tests
+
+There are not tests
+
 ## Disclaimer
 
 This project is a test for the position of web developer of Roiback's company

@@ -16,11 +16,11 @@ export class RoomSearcherComponent implements OnInit {
   hotels: Hotel[] = [];
   availableRooms: Room[] = [];
 
-  availabilityFormControls = availabilityFormControls;
+  availabilityFormControls = AvailabilityFormControls;
   availabilityForm = new FormGroup({
-      [availabilityFormControls.hotel]: new FormControl(null, Validators.required),
-      [availabilityFormControls.checkIn]: new FormControl(null, Validators.required),
-      [availabilityFormControls.checkOut]: new FormControl(null, Validators.required)
+      [AvailabilityFormControls.hotel]: new FormControl(null, Validators.required),
+      [AvailabilityFormControls.checkIn]: new FormControl(null, Validators.required),
+      [AvailabilityFormControls.checkOut]: new FormControl(null, Validators.required)
     }
   );
 
@@ -39,9 +39,9 @@ export class RoomSearcherComponent implements OnInit {
   async onCheckAvailability() {
     try {
       this.isAvailabilityLoading = true;
-      let hotel = this.availabilityForm.get(availabilityFormControls.hotel)?.value;
-      let checkIn = this.availabilityForm.get(availabilityFormControls.checkIn)?.value;
-      let checkOut = this.availabilityForm.get(availabilityFormControls.checkOut)?.value;
+      let hotel = this.availabilityForm.get(AvailabilityFormControls.hotel)?.value;
+      let checkIn = this.availabilityForm.get(AvailabilityFormControls.checkIn)?.value;
+      let checkOut = this.availabilityForm.get(AvailabilityFormControls.checkOut)?.value;
       this.availableRooms = await this.hotelsService.getAvailability(hotel, checkIn, checkOut);
       this.isAvailabilityLoading = false;
     } catch (e) {
@@ -58,7 +58,7 @@ export class RoomSearcherComponent implements OnInit {
   }
 }
 
-const availabilityFormControls = {
+const AvailabilityFormControls = {
   hotel: 'hotel',
   checkIn: 'checkIn',
   checkOut: 'checkOut'

@@ -94,7 +94,7 @@ export class HotelsService {
    * @param checkOut
    */
   async getAvailability(hotelCode: string, checkIn: Date, checkOut: Date) {
-    await this.timeout(2000); //fake http request time
+    await this.timeout(2000); //fake http response time
     return this.filterRooms(hotelCode, checkIn, checkOut);
   }
 

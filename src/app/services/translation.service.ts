@@ -40,7 +40,7 @@ export class TranslationService {
   }
 
   /**
-   * Updates the UI selected language
+   * Updates the UI with selected language
    * @param lang
    */
   onChangeLanguage(lang: string) {
